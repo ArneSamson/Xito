@@ -1,7 +1,9 @@
 <template>
   <div>
     <Navbar />
-    <router-view />
+    <div id="top-padder-for-content">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -21,6 +23,10 @@ export default {
 <style scoped>
 header {
   line-height: 1.5;
+}
+
+#top-padder-for-content {
+  padding-top: 64px;
 }
 
 .logo {
