@@ -1,19 +1,20 @@
-<script setup>
-
-</script>
-
 <template>
+  <div>
+    <Navbar />
+  </div>
   <div>
       <ImageRecognition />
   </div>
 </template>
 
 <script>
+import Navbar from './components/Navbar.vue'
 import ImageRecognition from './components/imageRecognition.vue'
 
 export default {
   name: 'App',
   components: {
+    Navbar,
     ImageRecognition
   }
 }
