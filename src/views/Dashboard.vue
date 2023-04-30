@@ -4,7 +4,7 @@
       <!-- add your settings content here -->
     </div>
     <div>
-        <ImageRecognition/>
+        <imageRecognition/>
     </div>
   </template>
   
@@ -12,7 +12,10 @@
   import imageRecognition from '../components/imageRecognition.vue';
 
   export default {
-    name: 'Dashboard'
+    name: 'Dashboard',
+    components: {
+    imageRecognition
+  }
   }
   </script>
   
