@@ -5,7 +5,7 @@
         <div class="status-circle">
           <svg viewBox="0 0 36 36" class="donut">
             <circle class="donut-hole" cx="18" cy="18" r="15.91549430918954" fill="#fff"></circle>
-            <circle class="donut-ring" cx="18" cy="18" r="15.91549430918954" fill="transparent" :stroke-dasharray="circumference" :stroke-dashoffset="(circumference * (100 - greenhouse.health)) / 100"></circle>
+            <circle class="donut-ring" cx="18" cy="18" r="15.91549430918954" fill="transparent" :stroke-dasharray="circumference" :stroke-dashoffset="(circumference * (100 - greenhouse.health)) / 100" :class="{ 'low-health': greenhouse.health < 50 }"></circle>
           </svg>
           <div class="percent">{{ greenhouse.health }}%</div>
         </div>
@@ -43,6 +43,10 @@
     .greenhouses-container {
     display: flex;
     justify-content: space-around; /* this will evenly distribute the greenhouse components horizontally */
+    background-color: #F1E9E9;
+    margin: 60px 48px 0px 48px;
+    padding: 32px;
+    border-radius: 20px;
     }
 
     .status-circle {
@@ -63,8 +67,14 @@
 
     .donut-ring {
     fill: transparent;
-    stroke: #2ecc71;
     stroke-width: 3px;
+    }
+    .donut-ring.low-health {
+    stroke: #EF4732;
+    }
+
+    .donut-ring:not(.low-health) {
+    stroke: #63B76D;
     }
 
     .percent {
@@ -72,7 +82,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 12px;
+    font-size: 36px;
     font-weight: bold;
     }
 

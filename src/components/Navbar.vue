@@ -58,7 +58,6 @@
     padding: 1rem;
     background-color: #63B76D; 
     color: #F1E9E9;
-    margin-bottom: 200px;
 }
 
 .navbar-left {
