@@ -1,6 +1,6 @@
 # Xito-vue
 
-## Project for LAB2
+Project for LAB2
 
 ## Project Setup
 
