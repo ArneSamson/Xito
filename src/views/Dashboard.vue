@@ -2,6 +2,7 @@
     <div>
       <!-- add your settings content here -->
       <Statistics/>
+      <IllnessesDash/>
     </div>
     <div class="top-padding">
         <imageRecognition/>
@@ -11,12 +12,14 @@
   <script>
   import imageRecognition from '../components/imageRecognition.vue';
   import Statistics from '../components/Statistics.vue';
+  import IllnessesDash from '../components/Illnesses-dash.vue';
 
   export default {
     name: 'Dashboard',
     components: {
     imageRecognition,
-    Statistics
+    Statistics,
+    IllnessesDash
   }
   }
   </script>
