@@ -1,109 +1,103 @@
 <template>
     <div class="diseases">
-        <div class="disease" v-for="disease in diseases" :key="disease.id">
-            <div class="disease-header">
-                <h3>{{ disease.name }}</h3>
+      <div class="disease" v-for="greenhouse in greenhouses" :key="greenhouse.id">
+        <div class="disease-header">
+          <h3>{{ greenhouse.name }}</h3>
         </div>
         <div class="disease-content">
-            <div class="row">
-            <div class="column" v-for="greenhouse in greenhouses" :key="greenhouse.id">
-                <h4>Greenhouse {{ greenhouse.id }}</h4>
-                <div class="infected-plants">
-                    <div class="plant" v-for="plant in disease.infectedPlants.filter(p => p.greenhouseId === greenhouse.id)" :key="plant.id">
-                        <img :src="plant.image" alt="Infected plant">
-                        <p>Disease: {{ disease.name }}</p>
-                        <p>Location: Row {{ plant.row }}, Block {{ plant.block }}</p>
-                    </div>
-                <p class="no-infected-plants" v-if="!disease.infectedPlants.filter(p => p.greenhouseId === greenhouse.id).length">No infected plants</p>
+          <div class="row">
+            <div class="column" v-for="plant in greenhouse.infectedPlants" :key="plant.id">
+              <!-- <h4>Greenhouse {{ greenhouse.id }}</h4> -->
+              <div class="infected-plants">
+                <div class="plant">
+                  <img :src="plant.image" alt="Infected plant">
+                  <p>Disease: {{ plant.disease }}</p>
+                  <p>Location: Row {{ plant.row }}, Block {{ plant.block }}</p>
                 </div>
+                <p class="no-infected-plants" v-if="!greenhouse.infectedPlants.length">No infected plants</p>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-</template>
+  </template>
   
   <script>
   export default {
     name: 'IllnessesDash',
-    props: {
-      greenhouses: {
-        type: Array,
-        required: true
-      },
-      diseases: {
-        type: Array,
-        required: true
-      }
-
-      
+    data() {
+      return {
+        greenhouses: [],
+      };
+    },
+    created() {
+      // Fetch the diseases and greenhouses data here
+      // and set the values of the data properties
+      this.greenhouses = [
+        {
+          id: 1,
+          name: 'Greenhouse 1',
+          infectedPlants: [
+            {
+              id: 1,
+              image: '/src/assets/tomato-images/1.jpg',
+              disease: 'Anthracnose',
+              row: 1,
+              block: 1
+            },
+            {
+              id: 2,
+              image: '/src/assets/tomato-images/3.jpg',
+              disease: 'Bacterial Spot',
+              row: 1,
+              block: 2
+            }
+          ]
+        },
+        {
+          id: 2,
+          name: 'Greenhouse 2',
+          infectedPlants: [
+            {
+              id: 3,
+              image: '/src/assets/tomato-images/2.jpg',
+              disease: 'Powdery Mildew',
+              row: 2,
+              block: 1
+            }
+          ]
+        }
+      ];
     }
-    
-  }
-  </script>
+  };
+  </script>  
   
   <style scoped>
   .diseases {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    background-color: #F1E9E9;
+    margin: 60px 48px 0px 48px;
+    padding: 32px;
+    border-radius: 20px;
   }
   
   .disease {
     width: 48%;
     margin-bottom: 20px;
-    background-color: #f7f7f7;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    /* background-color: #F1E9E9; */
   }
   
   .disease-header {
-    background-color: #f2f2f2;
+    background-color: #F1E9E9;
     padding: 10px;
     border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-right-radius: 20px;
   }
-  
-  .disease-content {
-    padding: 10px;
+  .plant img{
+    height: 50px;
   }
-  
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .column {
-    flex: 1;
-  }
-  
-  h4 {
-    margin-top: 0;
-  }
-  
-  .infected-plants {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .plant {
-    flex-basis: calc(33.33% - 10px);
-    margin: 5px;
-    padding: 5px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .plant img {
-    max-width: 100%;
-    max-height: 150px;
-  }
-  
-  .no-infected-plants {
-    margin-top: 10px;
-  }
+
   </style>
-  
