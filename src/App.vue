@@ -1,9 +1,7 @@
 <template>
   <div>
     <Navbar />
-  </div>
-  <div>
-      <ImageRecognition />
+    <router-view />
   </div>
 </template>
 
@@ -21,6 +19,9 @@ export default {
 </script>
 
 <style scoped>
+#app{
+  
+}
 header {
   line-height: 1.5;
 }

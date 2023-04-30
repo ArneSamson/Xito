@@ -5,9 +5,9 @@
         <router-link to="/" class="navbar-logo">
             <img src="../assets/logo.png" alt="Logo">
         </router-link>
-        <router-link to="/views/dashboard" class="navbar-link">Dashboard</router-link>
-        <router-link to="/views/identification" class="navbar-link">Identification</router-link>
-        <router-link to="/views/activities" class="navbar-link">Activities</router-link>
+        <router-link to="/dashboard" class="navbar-link">Dashboard</router-link>
+        <router-link to="/identification" class="navbar-link">Identification</router-link>
+        <router-link to="/activities" class="navbar-link">Activities</router-link>
         </div>
 
         <!-- Right side of navbar -->
@@ -15,15 +15,18 @@
         <button class="navbar-btn" @click="showPopup">Popup</button>
         <button class="navbar-btn" @click="showNotifications">Notifications</button>
         <router-link to="/settings" class="navbar-link">Settings</router-link>
-        <div class="navbar-user">
+        <router-link to="/profile" class="navbar-user">
             <span class="navbar-user-greeting">Welcome, {{ username }}</span>
             <span class="navbar-user-function">{{ userFunction }}</span>
-        </div>
+        </router-link>
         </div>
     </nav>
 </template>
 
 <script>
+
+    import { RouterLink } from 'vue-router'
+
     export default {
     data() {
         return {
@@ -55,6 +58,7 @@
     padding: 1rem;
     background-color: #63B76D; 
     color: #F1E9E9;
+    margin-bottom: 200px;
 }
 
 .navbar-left {

@@ -1,13 +1,13 @@
 <template>
     <div>
-      <h1>Identification</h1>
+      <h1>Settings Page</h1>
       <!-- add your settings content here -->
     </div>
   </template>
   
   <script>
   export default {
-    name: 'Identification'
+    name: 'Settings'
   }
   </script>
   
