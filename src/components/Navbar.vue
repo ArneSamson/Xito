@@ -3,11 +3,11 @@
         <!-- Left side of navbar -->
         <div class="navbar-left">
         <router-link to="/" class="navbar-logo">
-            <img src="/path/to/logo.png" alt="Logo">
+            <img src="../assets/logo.png" alt="Logo">
         </router-link>
-        <router-link to="/dashboard" class="navbar-link">Dashboard</router-link>
-        <router-link to="/identification" class="navbar-link">Identification</router-link>
-        <router-link to="/activities" class="navbar-link">Activities</router-link>
+        <router-link to="/views/dashboard" class="navbar-link">Dashboard</router-link>
+        <router-link to="/views/identification" class="navbar-link">Identification</router-link>
+        <router-link to="/views/activities" class="navbar-link">Activities</router-link>
         </div>
 
         <!-- Right side of navbar -->
@@ -44,12 +44,17 @@
   
 <style>
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #333;
-  color: #fff;
+    position: fixed; /* Set position to fixed */
+    top: 0; /* Stick to top of viewport */
+    left: 0; /* Stick to left side of viewport */
+    right: 0; /* Stick to right side of viewport */
+    z-index: 100; /* Set z-index to make sure navbar is on top of other elements */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #63B76D; 
+    color: #F1E9E9;
 }
 
 .navbar-left {
@@ -61,9 +66,14 @@
   margin-right: 2rem;
 }
 
+.navbar-logo img {
+  height: 2.5rem;
+  width: auto;
+}
+
 .navbar-link {
   margin-right: 2rem;
-  color: #fff;
+  color: #F1E9E9;
   text-decoration: none;
 }
 
@@ -81,7 +91,7 @@
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
-  background-color: #fff;
+  background-color: #F1E9E9;
   color: #333;
   cursor: pointer;
 }
