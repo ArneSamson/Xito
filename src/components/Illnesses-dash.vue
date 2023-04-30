@@ -52,6 +52,13 @@
               disease: 'Bacterial Spot',
               row: 1,
               block: 2
+            },
+            {
+                id: 3,
+                image: '/src/assets/tomato-images/1.jpg',
+                disease: 'Powdery Mildew',
+                row: 2,
+                block: 1
             }
           ]
         },
@@ -61,7 +68,7 @@
           infectedPlants: [
             {
               id: 3,
-              image: '/src/assets/tomato-images/2.jpg',
+              image: '/src/assets/tomato-images/3.jpg',
               disease: 'Powdery Mildew',
               row: 2,
               block: 1
