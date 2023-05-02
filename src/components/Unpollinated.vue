@@ -9,16 +9,16 @@
                 </div>
                 <div class="pollination-content">
                     <div class="row">
-                        <div class="column" v-for="plant in greenhouse.sideshootPlants" :key="plant.id">
+                        <div class="column" v-for="plant in greenhouse.unpollinatedPlants" :key="plant.id">
                         <!-- <h4>Greenhouse {{ greenhouse.id }}</h4> -->
                             <div class="unpollinated-plants">
                                 <div class="plant">
                                 <img :src="plant.image" alt="unpollinated plant">
                                 <p>Location: Row {{ plant.row }}, Block {{ plant.block }}</p>
                                 </div>
-                                <p class="no-unpollinated-plants" v-if="!greenhouse.sideshootPlants.length">No unpollinated plants</p>
                             </div>
                         </div>
+                        <p class="no-unpollinated-plants" v-if="!greenhouse.unpollinatedPlants.length">No unpollinated plants</p>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
   
   <script>
   export default {
-    name: 'SideShootDash',
+    name: 'Unpollinated',
     data() {
       return {
         greenhouses: [],
@@ -39,38 +39,12 @@
         {
           id: 1,
           name: 'Greenhouse 1',
-          sideshootPlants: [
-            {
-              id: 1,
-              image: '/src/assets/tomato-images/1.jpg',
-              row: 1,
-              block: 1
-            },
-            {
-              id: 2,
-              image: '/src/assets/tomato-images/3.jpg',
-              row: 1,
-              block: 2
-            }
-        ]
+          unpollinatedPlants: []
         },
         {
           id: 2,
           name: 'Greenhouse 2',
-          sideshootPlants: [
-            {
-              id: 3,
-              image: '/src/assets/tomato-images/3.jpg',
-              row: 2,
-              block: 1
-            },
-            {
-                id: 3,
-                image: '/src/assets/tomato-images/1.jpg',
-                row: 2,
-                block: 1
-            }
-          ]
+          unpollinatedPlants: []
         }
       ];
     }
