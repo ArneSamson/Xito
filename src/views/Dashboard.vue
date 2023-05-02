@@ -6,7 +6,8 @@
       <div class="pop-ups">
         <IllnessesDash/>
         <SideShootDash/>
-
+        <Unpollinated/>
+        
       </div>
 
     </div>
@@ -20,6 +21,7 @@
   import Statistics from '../components/Statistics.vue';
   import IllnessesDash from '../components/Illnesses-dash.vue';
   import SideShootDash from '../components/sideshoots-dash.vue';
+  import Unpollinated from '../components/Unpollinated.vue';
 
   export default {
     name: 'Dashboard',
@@ -27,7 +29,8 @@
     imageRecognition,
     Statistics,
     IllnessesDash,
-    SideShootDash
+    SideShootDash,
+    Unpollinated
   }
   }
   </script>
