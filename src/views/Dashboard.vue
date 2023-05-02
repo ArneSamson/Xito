@@ -7,7 +7,8 @@
         <IllnessesDash/>
         <SideShootDash/>
         <Unpollinated/>
-        
+        <Harvestable/>
+
       </div>
 
     </div>
@@ -22,6 +23,7 @@
   import IllnessesDash from '../components/Illnesses-dash.vue';
   import SideShootDash from '../components/sideshoots-dash.vue';
   import Unpollinated from '../components/Unpollinated.vue';
+  import Harvestable from '../components/Harvestable.vue';
 
   export default {
     name: 'Dashboard',
@@ -30,7 +32,8 @@
     Statistics,
     IllnessesDash,
     SideShootDash,
-    Unpollinated
+    Unpollinated,
+    Harvestable
   }
   }
   </script>
