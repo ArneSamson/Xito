@@ -16,7 +16,7 @@
                                 <img :src="plant.image" alt="plant with side shoot">
                                 <p>Location: Row {{ plant.row }}, Block {{ plant.block }}</p>
                                 </div>
-                                <p class="no-infected-plants" v-if="!greenhouse.sideshootPlants.length">No infected plants</p>
+                                <p class="no-side-shoot" v-if="!greenhouse.sideshootPlants.length">No side shoots</p>
                             </div>
                         </div>
                     </div>
