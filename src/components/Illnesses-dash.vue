@@ -2,24 +2,24 @@
 
   <div>
     <h1>Illnesses</h1>
-    <div class="diseases">
-      <div class="disease" v-for="greenhouse in greenhouses" :key="greenhouse.id">
-        <div class="disease-header">
+      <div class="diseases">
+        <div class="disease" v-for="greenhouse in greenhouses" :key="greenhouse.id">
+          <div class="disease-header">
           <h3>{{ greenhouse.name }}</h3>
-        </div>
-        <div class="disease-content">
-          <div class="row">
-            <div class="column" v-for="plant in greenhouse.infectedPlants" :key="plant.id">
-              <!-- <h4>Greenhouse {{ greenhouse.id }}</h4> -->
-              <div class="infected-plants">
-                <div class="plant">
-                  <img :src="plant.image" alt="Infected plant">
-                  <p>Disease: {{ plant.disease }}</p>
-                  <p>Location: Row {{ plant.row }}, Block {{ plant.block }}</p>
-                </div>
-                <p class="no-infected-plants" v-if="!greenhouse.infectedPlants.length">No infected plants</p>
-              </div>
             </div>
+              <div class="disease-content">
+              <div class="row">
+              <div class="column" v-for="plant in greenhouse.infectedPlants" :key="plant.id">
+                  <!-- <h4>Greenhouse {{ greenhouse.id }}</h4> -->
+              <div class="infected-plants">
+                  <div class="plant">
+                    <img :src="plant.image" alt="Infected plant">
+                    <p>Disease: {{ plant.disease }}</p>
+                    <p>Location: Row {{ plant.row }}, Block {{ plant.block }}</p>
+                  </div>
+                </div>
+              </div>
+              <p class="no-infected-plants" v-if="!greenhouse.infectedPlants.length">No infected plants</p>
           </div>
         </div>
       </div>
