@@ -1,4 +1,7 @@
 <template>
+
+  <div>
+    <h1>Illnesses</h1>
     <div class="diseases">
       <div class="disease" v-for="greenhouse in greenhouses" :key="greenhouse.id">
         <div class="disease-header">
@@ -21,6 +24,7 @@
         </div>
       </div>
     </div>
+  </div>
   </template>
   
   <script>
