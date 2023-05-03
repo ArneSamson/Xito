@@ -23,7 +23,6 @@
     </div>
 
     <div id="message">Please wait...loading model...</div>
-    <p>aaa</p>
     </div>
 </template>
   
