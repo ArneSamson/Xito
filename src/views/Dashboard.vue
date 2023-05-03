@@ -4,6 +4,7 @@
       <Statistics/>
       <div>
         <Timeline/>
+        <GreenhouseLayout/>
       </div>
 
       <div class="pop-ups">
@@ -29,6 +30,7 @@
   import Unpollinated from '../components/Unpollinated.vue';
   import Harvestable from '../components/Harvestable.vue';
   import Timeline from '../components/Timeline.vue';
+  import GreenhouseLayout from '../components/greenhouse-layout.vue';
 
   export default {
     name: 'Dashboard',
@@ -39,7 +41,8 @@
     SideShootDash,
     Unpollinated,
     Harvestable,
-    Timeline
+    Timeline,
+    GreenhouseLayout
   }
   }
   </script>
