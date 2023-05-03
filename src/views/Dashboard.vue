@@ -2,6 +2,9 @@
     <div>
       <!-- add your settings content here -->
       <Statistics/>
+      <div>
+        <Timeline/>
+      </div>
 
       <div class="pop-ups">
         <IllnessesDash/>
@@ -11,9 +14,10 @@
 
       </div>
 
+
     </div>
     <div class="top-padding">
-        <imageRecognition/>
+        <!-- <imageRecognition/> -->
     </div>
   </template>
   
@@ -24,6 +28,7 @@
   import SideShootDash from '../components/sideshoots-dash.vue';
   import Unpollinated from '../components/Unpollinated.vue';
   import Harvestable from '../components/Harvestable.vue';
+  import Timeline from '../components/Timeline.vue';
 
   export default {
     name: 'Dashboard',
@@ -33,7 +38,8 @@
     IllnessesDash,
     SideShootDash,
     Unpollinated,
-    Harvestable
+    Harvestable,
+    Timeline
   }
   }
   </script>
