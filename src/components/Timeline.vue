@@ -28,7 +28,13 @@
   .timeline {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
+    /* padding-right: 100px; */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .navbar-link{
+    margin: 0;
   }
   
   .timeline-days {
@@ -43,6 +49,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: calc(100% / 20);
     height: 50px;
     padding: 10px;
