@@ -1,9 +1,23 @@
 <template>
   <div class="greenhouse-container">
-    <div class="greenhouse" v-for="greenhouse in greenhouses" :key="greenhouse.id">
+    <div class="filters">
+      <select v-model="selectedFilter">
+        <option value="illnesses">Illnesses</option>
+        <option value="sideshoots">Sideshoots</option>
+        <option value="unpollinated">Unpollinated</option>
+        <option value="harvestable">Harvestable</option>
+      </select>
+    </div>
+    <div class="greenhouse" v-for="greenhouse in filteredGreenhouses" :key="greenhouse.id">
       <div class="walkway"></div>
       <div class="column" v-for="column in greenhouse.columns" :key="column.id">
-        <div class="block" v-for="block in column.blocks" :key="block.id" :style="{ backgroundColor: block.color }"></div>
+        <div
+          class="block"
+          v-for="block in column.blocks"
+          :key="block.id"
+          :style="{ backgroundColor: block.color }"
+          :class="{ 'highlighted': block[selectedFilter] > 0 }"
+        ></div>
       </div>
       <div class="walkway"></div>
     </div>
@@ -70,8 +84,24 @@ export default {
           ],
         },
       ],
+      selectedFilter: "illnesses"
     };
   },
+  computed: {
+    filteredGreenhouses() {
+      return this.greenhouses.map((greenhouse) => {
+        return {
+          ...greenhouse,
+          columns: greenhouse.columns.map((column) => {
+            return {
+              ...column,
+              blocks: column.blocks.filter((block) => block[this.selectedFilter] > 0)
+            };
+          })
+        };
+      });
+    }
+  }
 };
 </script>
 
@@ -83,6 +113,10 @@ export default {
     margin-top: 20px;
     background-color: #F1E9E9;
     border-radius: 20px;
+  }
+
+  .filters {
+    margin-right: 20px;
   }
 
   .greenhouse {
@@ -105,5 +139,9 @@ export default {
     height: 50px;
     margin-right: 10px;
     border: 1px solid #c4c4c4;
+  }
+
+  .highlighted {
+    background-color: yellow;
   }
 </style>
