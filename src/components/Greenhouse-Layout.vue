@@ -81,6 +81,8 @@
       flex-direction: row;
       justify-content: space-evenly;
       margin-top: 20px;
+      background-color: #F1E9E9;
+      border-radius: 20px;
     }
   
     .greenhouse {
