@@ -8,16 +8,17 @@
         <option value="harvestable">Harvestable</option>
       </select>
     </div>
-    <div class="greenhouse" v-for="greenhouse in filteredGreenhouses" :key="greenhouse.id">
+    <div class="greenhouse" v-for="greenhouse in greenhouses" :key="greenhouse.id">
       <div class="walkway"></div>
       <div class="column" v-for="column in greenhouse.columns" :key="column.id">
-        <div
-          class="block"
-          v-for="block in column.blocks"
-          :key="block.id"
-          :style="{ backgroundColor: block.color }"
-          :class="{ 'highlighted': block[selectedFilter] > 0 }"
-        ></div>
+        <div 
+        class="block" 
+        v-for="block in column.blocks" 
+        :key="block.id" 
+        :style="{ backgroundColor: block.color }"
+        :class="getBlockClass(block)"
+        >
+        </div>
       </div>
       <div class="walkway"></div>
     </div>
@@ -87,21 +88,17 @@ export default {
       selectedFilter: "illnesses"
     };
   },
-  computed: {
-    filteredGreenhouses() {
-      return this.greenhouses.map((greenhouse) => {
-        return {
-          ...greenhouse,
-          columns: greenhouse.columns.map((column) => {
-            return {
-              ...column,
-              blocks: column.blocks.filter((block) => block[this.selectedFilter] > 0)
-            };
-          })
-        };
-      });
-    }
-  }
+  methods: {
+    getBlockClass(block) {
+      const params = ["illnesses", "sideshoots", "unpollinated", "harvestable"];
+      for (const param of params) {
+        if (param === this.selectedFilter && block[param] > 0) {
+          return "highlight";
+        }
+      }
+      return "";
+    },
+  },
 };
 </script>
 
@@ -113,10 +110,6 @@ export default {
     margin-top: 20px;
     background-color: #F1E9E9;
     border-radius: 20px;
-  }
-
-  .filters {
-    margin-right: 20px;
   }
 
   .greenhouse {
@@ -140,8 +133,8 @@ export default {
     margin-right: 10px;
     border: 1px solid #c4c4c4;
   }
-
-  .highlighted {
-    background-color: yellow;
+  .highlight{
+    border-color: yellow;
+    border-width: 5px;
   }
 </style>
