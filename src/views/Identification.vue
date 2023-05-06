@@ -8,6 +8,7 @@
     <div class="pop-ups">
       <IllnessesFolddown/>
       <SideshootsFolddown/>
+      <UnpollinatedFolddown/>
     </div>
 
   </template>
@@ -15,12 +16,14 @@
   <script>
   import IllnessesFolddown from '../components/Illnesses-folddown.vue';
   import SideshootsFolddown from '../components/Sideshoots-folddown.vue';
+  import UnpollinatedFolddown from '../components/Unpollinated-folddown.vue';
 
   export default {
     name: 'Identification',
     components: {
     IllnessesFolddown,
-    SideshootsFolddown
+    SideshootsFolddown,
+    UnpollinatedFolddown
     }
   }
   </script>
