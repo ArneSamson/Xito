@@ -1,6 +1,9 @@
 <template>
     <div class="fold-down-menu">
-      <button @click="toggleMenu">{{ buttonText }}</button>
+        <div class="menu-header">
+            <h1>Illnesses {{ totalCards }}</h1>
+            <button @click="toggleMenu">{{ buttonText }}</button>
+        </div>
       <div class="menu-content" v-if="show">
         <div v-for="(greenhouse, index) in greenhouses" :key="index">
           <h3>{{ greenhouse.name }}</h3>
@@ -21,7 +24,7 @@
     data() {
       return {
         show: false,
-        buttonText: "Show menu",
+        buttonText: "Show Illnesses",
         greenhouses: [
           {
             name: "Greenhouse 1",
@@ -71,7 +74,16 @@
     methods: {
       toggleMenu() {
         this.show = !this.show;
-        this.buttonText = this.show ? "Hide menu" : "Show menu";
+        this.buttonText = this.show ? "Hide Illnesses" : "Show Illness";
+      },
+    },
+    computed: {
+      totalCards() {
+        let total = 0;
+        for (let i = 0; i < this.greenhouses.length; i++) {
+          total += this.greenhouses[i].cards.length;
+        }
+        return total;
       },
     },
   };
@@ -79,8 +91,20 @@
   
   <style>
   .fold-down-menu {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
   }
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    margin: 48px;
+    background-color: #F1E9E9;
+    padding: 24px;
+    border-radius: 20px;
+}
   .menu-toggle {
     position: absolute;
     top: 0;
