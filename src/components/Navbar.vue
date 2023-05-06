@@ -1,48 +1,73 @@
 <template>
-    <nav class="navbar">
-        <!-- Left side of navbar -->
-        <div class="navbar-left">
-        <router-link to="/" class="navbar-logo">
-            <img src="../assets/logo.png" alt="Logo">
-        </router-link>
-        <router-link to="/dashboard" class="navbar-link">Dashboard</router-link>
-        <router-link to="/identification" class="navbar-link">Identification</router-link>
-        <router-link to="/activities" class="navbar-link">Activities</router-link>
-        </div>
+  <nav class="navbar">
+    <!-- Left side of navbar -->
+    <div class="navbar-left">
+      <router-link to="/" class="navbar-logo">
+        <img src="../assets/logo.png" alt="Logo">
+      </router-link>
+      <router-link to="/dashboard" class="navbar-link">Dashboard</router-link>
+      <router-link to="/identification" class="navbar-link">Identification</router-link>
+      <router-link to="/activities" class="navbar-link">Activities</router-link>
+    </div>
 
-        <!-- Right side of navbar -->
-        <div class="navbar-right">
-        <button class="navbar-btn" @click="showPopup">Popup</button>
-        <button class="navbar-btn" @click="showNotifications">Notifications</button>
-        <router-link to="/settings" class="navbar-link">Settings</router-link>
-        <router-link to="/profile" class="navbar-user">
-            <span class="navbar-user-greeting">Welcome, {{ username }}</span>
-            <span class="navbar-user-function">{{ userFunction }}</span>
-        </router-link>
-        </div>
-    </nav>
+    <!-- Right side of navbar -->
+    <div class="navbar-right">
+      
+      <button class="navbar-btn" @click="showPopup">Popup</button>
+
+      <button class="navbar-btn" @click="showNotifications">Notifications</button>
+
+      <router-link to="/settings" class="navbar-link">Settings</router-link>
+      <router-link to="/profile" class="navbar-user">
+        <span class="navbar-user-greeting">Welcome, {{ username }}</span>
+        <span class="navbar-user-function">{{ userFunction }}</span>
+      </router-link>
+    </div>
+
+    <!-- Popup component -->
+    <Popup v-if="showingPopup" @close="showingPopup = false">
+      <h2>Popup Content</h2>
+      <p>Here's some content for the popup</p>
+    </Popup>
+
+    <!-- Notifications component -->
+    <Notifications v-if="showingNoti" @close="showingNoti = false">
+      <h2>Notifications</h2>
+      <p>Here's some content for the notifications</p>
+    </Notifications>
+
+  </nav>
 </template>
 
 <script>
+  import { RouterLink } from 'vue-router'
+  import Popup from './pop-up.vue'
+  import Notifications from './Notifications.vue'
 
-    import { RouterLink } from 'vue-router'
-
-    export default {
+  export default {
+    components: {
+      Popup,
+      Notifications
+    },
     data() {
-        return {
+      return {
         username: "John", // Replace with actual username
-        userFunction: "Team Leader" // Replace with actual user function
-        };
+        userFunction: "Team Leader", // Replace with actual user function
+        showingPopup: false,
+        popupOpen: false,
+        showingNoti: false,
+      };
     },
     methods: {
-        showPopup() {
-        // Add code to show popup
-        },
-        showNotifications() {
+      showPopup() {
+        this.showingPopup = true;
+      },
+      showNotifications() {
         // Add code to show notifications
-        }
+        this.showingNoti = true;
+      }
+    },
     }
-    };
 </script>
   
 <style>
