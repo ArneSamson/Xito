@@ -24,7 +24,7 @@
     data() {
       return {
         show: false,
-        buttonText: "Show Illnesses",
+        buttonText: "Show",
         greenhouses: [
           {
             name: "Greenhouse 1",
@@ -74,7 +74,7 @@
     methods: {
       toggleMenu() {
         this.show = !this.show;
-        this.buttonText = this.show ? "Hide Illnesses" : "Show Illness";
+        this.buttonText = this.show ? "Hide" : "Show";
       },
     },
     computed: {
