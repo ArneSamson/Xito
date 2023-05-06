@@ -47,7 +47,7 @@
   }
   </script>
   
-<style>
+<style scoped>
 .top-padding{
   padding-top: 40px;
 }

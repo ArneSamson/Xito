@@ -1,7 +1,7 @@
 <template>
     <div class="fold-down-menu">
         <div class="menu-header">
-            <h1>Illnesses {{ totalCards }}</h1>
+            <h1>Ready For Harvest {{ totalCards }}</h1>
             <button @click="toggleMenu">{{ buttonText }}</button>
         </div>
       <div class="menu-content" v-if="show">
@@ -36,14 +36,6 @@
                 block: 2,
                 date: "2023-05-06",
                 time: "12:00 PM",
-              },
-              {
-                name: "Card 2",
-                image: "/src/assets/tomato-images/1.jpg",
-                row: 3,
-                block: 4,
-                date: "2023-05-07",
-                time: "2:00 PM",
               },
             ],
           },
