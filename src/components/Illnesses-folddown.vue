@@ -101,6 +101,7 @@
     align-items: center;
     flex-grow: 1;
     margin: 48px;
+    margin-bottom: 0;
     background-color: #F1E9E9;
     padding: 24px;
     border-radius: 20px;
@@ -113,6 +114,11 @@
   .menu-content {
     display: flex;
     flex-wrap: wrap;
+    margin: 48px;
+    margin-top: 0;
+    background-color: #F1E9E9;
+    padding: 24px;
+    border-radius: 20px;
   }
   .menu-content.show {
     display: block;
