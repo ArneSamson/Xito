@@ -30,7 +30,7 @@
   import Unpollinated from '../components/Unpollinated.vue';
   import Harvestable from '../components/Harvestable.vue';
   import Timeline from '../components/Timeline.vue';
-  import GreenhouseLayout from '../components/greenhouse-layout.vue';
+  import GreenhouseLayout from '../components/Greenhouse-Layout.vue';
 
   export default {
     name: 'Dashboard',
