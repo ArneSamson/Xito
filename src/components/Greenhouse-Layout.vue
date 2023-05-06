@@ -134,7 +134,7 @@ export default {
     border: 1px solid #c4c4c4;
   }
   .highlight{
-    border-color: yellow;
+    border-color: blue;
     border-width: 5px;
   }
 </style>
