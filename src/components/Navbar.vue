@@ -41,7 +41,7 @@
 
 <script>
   import { RouterLink } from 'vue-router'
-  import Popup from './pop-up.vue'
+  import Popup from './Pop-up.vue'
   import Notifications from './Notifications.vue'
 
   export default {
