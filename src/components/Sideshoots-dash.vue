@@ -42,13 +42,13 @@
           sideshootPlants: [
             {
               id: 1,
-              image: '/src/assets/tomato-images/1.jpg',
+              image: 'https://arnesamson.be/img-lib/tomato-images/1.jpg',
               row: 1,
               block: 1
             },
             {
               id: 2,
-              image: '/src/assets/tomato-images/3.jpg',
+              image: 'https://arnesamson.be/img-lib/tomato-images/3.jpg',
               row: 1,
               block: 2
             }
@@ -60,13 +60,13 @@
           sideshootPlants: [
             {
               id: 3,
-              image: '/src/assets/tomato-images/3.jpg',
+              image: 'https://arnesamson.be/img-lib/tomato-images/3.jpg',
               row: 2,
               block: 1
             },
             {
                 id: 3,
-                image: '/src/assets/tomato-images/1.jpg',
+                image: 'https://arnesamson.be/img-lib/tomato-images/1.jpg',
                 row: 2,
                 block: 1
             }

@@ -53,7 +53,7 @@
     function loadFile(event) {
         img.src = "../src/assets/tomato-images/"+ imgNumber.value + ".jpg"
         console.log(imgNumber.value);
-        console.log("Image uploaded!");
+        console.log("Image uploaded!"); 
     }
 
     function userImageUploaded() {

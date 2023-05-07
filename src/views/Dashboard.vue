@@ -18,7 +18,7 @@
 
     </div>
     <div class="top-padding">
-        <!-- <imageRecognition/> -->
+        <imageRecognition/>
     </div>
   </template>
   

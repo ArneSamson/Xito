@@ -31,7 +31,7 @@
             cards: [
               {
                 name: "Card 1",
-                image: "/src/assets/tomato-images/1.jpg",
+                image: "https://arnesamson.be/img-lib/tomato-images/1.jpg",
                 row: 1,
                 block: 2,
                 date: "2023-05-06",
@@ -39,7 +39,7 @@
               },
               {
                 name: "Card 2",
-                image: "/src/assets/tomato-images/1.jpg",
+                image: "https://arnesamson.be/img-lib/tomato-images/1.jpg",
                 row: 3,
                 block: 4,
                 date: "2023-05-07",
@@ -52,7 +52,7 @@
             cards: [
               {
                 name: "Card 3",
-                image: "/src/assets/tomato-images/1.jpg",
+                image: "https://arnesamson.be/img-lib/tomato-images/1.jpg",
                 row: 2,
                 block: 5,
                 date: "2023-05-08",
@@ -60,7 +60,7 @@
               },
               {
                 name: "Card 4",
-                image: "/src/assets/tomato-images/1.jpg",
+                image: "https://arnesamson.be/img-lib/tomato-images/1.jpg",
                 row: 1,
                 block: 3,
                 date: "2023-05-09",
