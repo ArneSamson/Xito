@@ -8,6 +8,7 @@
       <router-link to="/dashboard" class="navbar-link">Dashboard</router-link>
       <router-link to="/identification" class="navbar-link">Identification</router-link>
       <router-link to="/activities" class="navbar-link">Activities</router-link>
+      <router-link to="/live" class="navbar-link">Live</router-link>
     </div>
 
     <!-- Right side of navbar -->
@@ -51,7 +52,7 @@
     },
     data() {
       return {
-        username: "John", // Replace with actual username
+        username: "Jon", // Replace with actual username
         userFunction: "Team Leader", // Replace with actual user function
         showingPopup: false,
         popupOpen: false,
