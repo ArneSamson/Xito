@@ -25,6 +25,18 @@
 
         <div class="team-settings">
             <h1>Team</h1>
+            <div v-for="(team, index) in Teams" :key="index">
+                <h2>{{ team.team }}</h2>
+                <ul>
+                    <li v-for="(member, i) in team.members" :key="i">
+                        {{ member.name }} - {{ member.role }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="camera-settings">
+            <h1>Camera</h1>
             
         </div>
     </div>
@@ -34,30 +46,66 @@
 <script>
 
 export default {
-name: 'settings-comp',
-props: {
-    User: {
-        type: Object,
-        default: () => ({
-            username: 'Jon',
-            email: 'email@email.email.com',
-            '2FA': true,
-            method: 'SMS',
-            location: 'Maasmechelen',
-            notificationChoice: 'email',
-            notificationSound: false,
-        })
-    },
-    Teams: {
-        type: Array,
-        default: () => [
-            
-        ]
+    name: 'settings-comp',
+    props: {
+        User: {
+            type: Object,
+            default: () => ({
+                username: 'Jon',
+                email: 'email@email.email.com',
+                '2FA': true,
+                method: 'SMS',
+                location: 'Maasmechelen',
+                notificationChoice: 'email',
+                notificationSound: false,
+            })
+        },
+        Teams: {
+            type: Array,
+            default: () => ([
+                {
+                    team: "Team 1",
+                    members: [
+                        {
+                            name: "Jon",
+                            role: "Team Leader",
+                        },
+                        {
+                          name: "Juan",
+                          role: "Picker",
+                        }
+                    ]
+                },
+                {
+                    team: "Team 2",
+                    members: [
+                        {
+                            name: "Jana",
+                            role: "Assistant Team Leader",
+                        },
+                        {
+                          name: "Joana",
+                          role: "Picker",
+                        }
+                    ]
+                }
+            ])
+        },
+        Cameras: {
+            type: Array,
+            default: () => ([
+              {
+                id: "Camera 1",
+                ip: "",
+              },
+              {
+                id: "Camera 2",
+                ip: "",
+              }
+        ])
+      }
     }
 }
-
-}
-
 </script>
 
 <style scoped>
