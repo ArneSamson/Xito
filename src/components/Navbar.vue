@@ -70,7 +70,7 @@
     }
 </script>
   
-<style>
+<style scoped>
 .navbar {
     position: fixed; /* Set position to fixed */
     top: 0; /* Stick to top of viewport */
