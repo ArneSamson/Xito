@@ -2,10 +2,10 @@
   <div>
     <Navbar />
     <div id="top-padder-for-content">
-      <router-view/>
-      <RouterLink to="/dashboard" class="logo">
-        <img src="../assets/logo.png" alt="logo" />
-      </RouterLink>
+    <router-view/>
+      <!-- <RouterLink to="/dashboard" class="logo">
+        <img src="src/assets/logo.png" alt="logo" />
+      </RouterLink> -->
     </div>
   </div>
 </template>
