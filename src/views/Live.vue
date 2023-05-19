@@ -31,6 +31,7 @@ export default {
       identityImage: null,
       canvas: null,
       ctx: null,
+      imageData: null,
     };
   },
 
@@ -46,10 +47,7 @@ export default {
         console.error("Error accessing webcam:", error);
       });
 
-    this.classifier = ml5.imageClassifier(
-      "../../public/model/model.json",
-      this.onModelLoaded
-    );
+    this.classifier = ml5.imageClassifier("../../public/model/model.json", this.onModelLoaded);
   },
 
   methods: {
@@ -57,6 +55,7 @@ export default {
       this.message = "Model loaded!";
       this.isModelLoaded = true;
       console.log("Model loaded!");
+      console.log(this.classifier);
     },
     checkFrame() {
       this.canvas = document.getElementById("myCanvas"); // Add this line
@@ -64,9 +63,15 @@ export default {
 
       this.ctx.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height); // Update this line
 
-      this.classifier.classify(this.canvas, (err, results) => {
+      this.imageData = this.canvas.toDataURL("image/jpeg", 0.75);
+
+      const image = new Image();
+      image.src = this.imageData;
+
+
+      this.classifier.classify(this.imageData, (err, results) => {
             console.log(results);
-            message.innerHTML = `
+            this.message.innerHTML = `
             ${results[0].label} : ${results[0].confidence * 100}% 
             <br> ${results[1].label} : ${results[1].confidence * 100}%
             <br> ${results[2].label} : ${results[2].confidence * 100}%
