@@ -3,7 +3,7 @@
     <!-- Left side of navbar -->
     <div class="navbar-left">
       <router-link to="/" class="navbar-logo">
-        <img src="../assets/logo.png" alt="Logo">
+        <img src="https://arnesamson.be/img-lib/xito-logo.png" alt="Logo">
       </router-link>
       <router-link to="/dashboard" class="navbar-link">Dashboard</router-link>
       <router-link to="/identification" class="navbar-link">Identification</router-link>
