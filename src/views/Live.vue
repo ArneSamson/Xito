@@ -12,25 +12,19 @@
 
     <canvas id="myCanvas" width="300" height="200"></canvas>
 
-  
     <div id="message">{{ message }}</div>
   </div>
 </template>
 
 <script>
-
 import * as ml5 from 'ml5';
+import axios from 'axios';
 
 export default {
   mounted() {
-  
-  // add code for loading the model and making predictions here
-  const message = document.querySelector("#message");
-  // Controls the message showing on the screen
-  const checkButton = document.querySelector("#button");
-  // Contains the uploaded image
-
-  const video = this.$refs.video;
+    const message = document.querySelector("#message");
+    const checkButton = document.querySelector("#button");
+    const video = this.$refs.video;
     navigator.mediaDevices
       .getUserMedia({ video: true })
       .then((stream) => {
@@ -41,12 +35,11 @@ export default {
         console.error("Error accessing webcam:", error);
       });
 
-  checkButton.addEventListener("click", () => userImageUploaded());
+    checkButton.addEventListener("click", () => userImageUploaded());
 
-  // Initialize the Image Classifier method with Xito model
-  const classifier = ml5.imageClassifier('../../public/model/model.json', modelLoaded);
+    const classifier = ml5.imageClassifier('../../public/model/model.json', modelLoaded);
 
-  function userImageUploaded() {
+    function userImageUploaded() {
       const canvas = document.getElementById("myCanvas");
       const ctx = canvas.getContext("2d");
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -57,23 +50,34 @@ export default {
       message.innerHTML = "Image was loaded!"
 
       classifier.classify(image, (err, results) => {
-          console.log(results);
-          message.innerHTML = `
+        console.log(results);
+        message.innerHTML = `
           ${results[0].label} : ${results[0].confidence * 100}% 
           <br> ${results[1].label} : ${results[1].confidence * 100}%
           <br> ${results[2].label} : ${results[2].confidence * 100}%
           <br> ${results[3].label} : ${results[3].confidence * 100}%
           <br> ${results[4].label} : ${results[4].confidence * 100}%
-          `
+        `;
+
+        // Make a POST request to save the results
+        const data = {
+          label: results[0].label,
+          confidence: results[0].confidence
+        };
+        axios.post('http://localhost:8080/api/data', data)
+          .then(response => {
+            console.log('Data saved:', response.data);
+          })
+          .catch(error => {
+            console.error('Failed to save data:', error);
+          });
       });
-  }
+    }
 
-  // When the model is loaded
-  function modelLoaded() {
-      message.innerHTML = "Model Loaded"
+    function modelLoaded() {
+      message.innerHTML = "Model Loaded";
       console.log('Model Loaded!');
+    }
   }
-
-      }
-  }
+}
 </script>
