@@ -69,7 +69,7 @@ export default {
       image.src = this.imageData;
 
 
-      this.classifier.classify(image, (err, results) => {
+      this.classifier.classify(this.imageData, (err, results) => {
             console.log(results);
             this.message.innerHTML = `
             ${results[0].label} : ${results[0].confidence * 100}% 
