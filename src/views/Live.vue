@@ -20,7 +20,12 @@
       <ul>
         <li v-for="image in savedImages" :key="image.id">
           <img :src="image.url" :alt="image.fileName" width="100" height="100">
-          <span>{{ image.highestLabel }}</span>
+          <span> {{ image.highestLabel }} </span>
+          <span> {{ image.highestConfidence.toFixed(2) }}% </span>
+          <span> {{ new Date(image.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }} </span>
+          <span> {{ new Date(image.timestamp).toLocaleDateString() }} </span>
+          <span> {{ image.row }} </span>
+          <span> {{ image.block }} </span>
         </li>
       </ul>
     </div>
@@ -65,6 +70,10 @@ export default {
     const classifier = ml5.imageClassifier('../../public/model/model.json', modelLoaded);
 
     function userImageUploaded() {
+
+      const row = parseInt(window.prompt("Enter Row Number:"));
+      const block = parseInt(window.prompt("Enter Block Number:"));
+
       const canvas = document.getElementById("myCanvas");
       const ctx = canvas.getContext("2d");
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -77,24 +86,25 @@ export default {
       classifier.classify(image, (err, results) => {
         console.log(results);
         message.innerHTML = `
-          ${results[0].label} : ${results[0].confidence * 100}% 
-          <br> ${results[1].label} : ${results[1].confidence * 100}%
-          <br> ${results[2].label} : ${results[2].confidence * 100}%
-          <br> ${results[3].label} : ${results[3].confidence * 100}%
-          <br> ${results[4].label} : ${results[4].confidence * 100}%
+          ${results[0].label} : ${(results[0].confidence * 100).toFixed(2)}% 
+          <br> ${results[1].label} : ${(results[1].confidence * 100).toFixed(2)}%
+          <br> ${results[2].label} : ${(results[2].confidence * 100).toFixed(2)}%
+          <br> ${results[3].label} : ${(results[3].confidence * 100).toFixed(2)}%
+          <br> ${results[4].label} : ${(results[4].confidence * 100).toFixed(2)}%
         `;
 
-        // Save the image locally
-        const fileName = `image_${Date.now()}.jpeg`;
-        saveImageLocally(imageData, fileName, results);
+      // Save the image locally
+      const fileName = `image_${Date.now()}.jpeg`;
+      saveImageLocally(imageData, fileName, results, row, block);
 
       });
     }
 
-    const saveImageLocally = (imageData, fileName, results) => {
+    const saveImageLocally = (imageData, fileName, results, row, block) => {
 
       const highestConfidence = results[0].confidence * 100;
       const highestLabel = results[0].label;
+      const timestamp = new Date();
 
       // Save the image in local storage
       const savedImage = {
@@ -103,6 +113,9 @@ export default {
         url: imageData,
         highestConfidence: highestConfidence,
         highestLabel: highestLabel,
+        timestamp: timestamp,
+        row: row,
+        block: block
       };
       this.savedImages.push(savedImage);
 
