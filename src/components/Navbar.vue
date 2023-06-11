@@ -14,9 +14,9 @@
     <!-- Right side of navbar -->
     <div class="navbar-right">
       
-      <button class="navbar-btn" @click="showPopup">Popup</button>
+      <button class="navbar-btn weather" @click="showPopup"><span class="weather-icon"></span></button>
 
-      <button class="navbar-btn" @click="showNotifications">Notifications</button>
+      <button class="navbar-btn" @click="showNotifications"><span class="notif-icon"></span></button>
 
       <router-link to="/settings" class="navbar-link">Settings</router-link>
       <router-link to="/profile" class="navbar-user">
@@ -139,7 +139,24 @@
   color: #333;
   cursor: pointer;
 }
+.weather-icon {
+  display: inline-block;
+  width: 1.5rem; /* Adjust the size of the icon */
+  height: 1.5rem; /* Adjust the size of the icon */
+  background: url('../assets/icons/sun.svg') center center no-repeat;
+  background-size: contain;
+  border-radius: 0.25rem;
 
+}
+.notif-icon {
+  display: inline-block;
+  width: 1.5rem; /* Adjust the size of the icon */
+  height: 1.5rem; /* Adjust the size of the icon */
+  background: url('../assets/icons/bell.svg') center center no-repeat;
+  background-size: contain;
+  border-radius: 0.25rem;
+
+}
 .navbar-btn:hover {
   background-color: #eee;
 }
