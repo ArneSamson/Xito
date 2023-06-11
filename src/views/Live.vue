@@ -1,75 +1,131 @@
 <template>
+  <div>
     <div>
       <!-- add code for displaying the video here -->
-      <div>
-        <video id="video" width="300" height="200" autoplay></video>
-      </div>
-  
-      <!-- button that checks the current frame of the video -->
-      <div>
-        <button type="button" id="button">Check Frame</button>
-      </div>
-  
-      <!-- display the result of the classification -->
-      <div id="message">Please wait...loading model...</div>
+      <video ref="video" width="300" height="200" controls autoplay></video>
     </div>
-  </template>
-  
-  <script>
-  import * as ml5 from 'ml5';
-  
-  export default {
-    mounted() {
-      // add code for loading the model and making predictions here
-      const message = document.querySelector("#message");
-      // Controls the message showing on the screen
-      const checkButton = document.querySelector("#button");
-      // Button to check the current frame of the video
-      const video = document.querySelector("#video");
-      // Contains the webcam feed
-  
-      // Initialize the Image Classifier method with Xito model
-      const classifier = ml5.imageClassifier('../../public/model/model.json', modelLoaded);
-  
-      function modelLoaded() {
-        message.innerHTML = "Please allow access to your webcam!"
-        console.log('Model Loaded!');
-      }
-  
-      checkButton.addEventListener("click", event => {
-        classifier.classify((err, results) => {
-          console.log(results);
-          message.innerHTML = `
-            ${results[0].label} : ${results[0].confidence * 100}% 
-            <br> ${results[1].label} : ${results[1].confidence * 100}%
-            <br> ${results[2].label} : ${results[2].confidence * 100}%
-            <br> ${results[3].label} : ${results[3].confidence * 100}%
-            <br> ${results[4].label} : ${results[4].confidence * 100}%
-          `;
-  
-          if (results[0].confidence > 0.7) {
-            // save the current frame of the video
-            const canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            canvas.getContext('2d').drawImage(video, 0, 0);
-            const dataURL = canvas.toDataURL();
-            console.log(dataURL);
-          }
-        });
-      });
-  
-      // get access to the webcam
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-          video.srcObject = stream;
-          message.innerHTML = "Please click the button to check the current frame of the video.";
-        })
-        .catch(err => {
-          message.innerHTML = "Could not access webcam!";
-          console.error(err);
-        });
+
+    <div>
+      <!-- button that checks the current frame of the video -->
+      <button type="button" id="button" @click="checkFrame">Check Frame</button>
+    </div>
+
+    <canvas id="myCanvas" width="300" height="200"></canvas>
+
+    <div id="message">{{ message }}</div>
+
+    <div>
+      <!-- display saved images -->
+      <h2>Saved Images</h2>
+      <ul>
+        <li v-for="image in savedImages" :key="image.id">
+          <img :src="image.url" :alt="image.fileName" width="100" height="100">
+          <span> {{ image.highestLabel }} </span>
+          <span> {{ image.highestConfidence.toFixed(2) }}% </span>
+          <span> {{ new Date(image.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }} </span>
+          <span> {{ new Date(image.timestamp).toLocaleDateString() }} </span>
+          <span> {{ image.row }} </span>
+          <span> {{ image.block }} </span>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+</template>
+
+<script>
+import * as ml5 from 'ml5';
+// import axios from 'axios';
+
+export default {
+
+  data() {
+    return {
+      savedImages: [] // array of saved images
+    };
+  },
+  mounted() {
+    const message = document.querySelector("#message");
+    const checkButton = document.querySelector("#button");
+    const video = this.$refs.video;
+
+    // Retrieve saved images from local storage
+    const savedImages = localStorage.getItem("savedImages");
+    if (savedImages) {
+      this.savedImages = JSON.parse(savedImages);
     }
-  };
-  </script>
-  
+
+    navigator.mediaDevices
+      .getUserMedia({ video: true })
+      .then((stream) => {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch((error) => {
+        console.error("Error accessing webcam:", error);
+      });
+
+    checkButton.addEventListener("click", () => userImageUploaded());
+
+    const classifier = ml5.imageClassifier('../../public/model/model.json', modelLoaded);
+
+    function userImageUploaded() {
+
+      const row = parseInt(window.prompt("Enter Row Number:"));
+      const block = parseInt(window.prompt("Enter Block Number:"));
+
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL("image/jpeg", 0.75);
+
+      const image = new Image();
+      image.src = imageData;
+      message.innerHTML = "Image was loaded!"
+
+      classifier.classify(image, (err, results) => {
+        console.log(results);
+        message.innerHTML = `
+          ${results[0].label} : ${(results[0].confidence * 100).toFixed(2)}% 
+          <br> ${results[1].label} : ${(results[1].confidence * 100).toFixed(2)}%
+          <br> ${results[2].label} : ${(results[2].confidence * 100).toFixed(2)}%
+          <br> ${results[3].label} : ${(results[3].confidence * 100).toFixed(2)}%
+          <br> ${results[4].label} : ${(results[4].confidence * 100).toFixed(2)}%
+        `;
+
+      // Save the image locally
+      const fileName = `image_${Date.now()}.jpeg`;
+      saveImageLocally(imageData, fileName, results, row, block);
+
+      });
+    }
+
+    const saveImageLocally = (imageData, fileName, results, row, block) => {
+
+      const highestConfidence = results[0].confidence * 100;
+      const highestLabel = results[0].label;
+      const timestamp = new Date();
+
+      // Save the image in local storage
+      const savedImage = {
+        id: Date.now(),
+        fileName: fileName,
+        url: imageData,
+        highestConfidence: highestConfidence,
+        highestLabel: highestLabel,
+        timestamp: timestamp,
+        row: row,
+        block: block
+      };
+      this.savedImages.push(savedImage);
+
+      localStorage.setItem("savedImages", JSON.stringify(this.savedImages));
+    }
+
+    function modelLoaded() {
+      message.innerHTML = "Model Loaded";
+      console.log('Model Loaded!');
+    }
+  }
+}
+</script>
