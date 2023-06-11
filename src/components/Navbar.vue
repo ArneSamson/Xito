@@ -191,7 +191,8 @@
   background-color: #A8D160;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding: 10px;
+  padding-left: 30px;
+  padding-right: 10px;
   border-radius: 20px;
 }
 .user_data {
