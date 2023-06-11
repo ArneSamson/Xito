@@ -14,9 +14,10 @@
     <!-- Right side of navbar -->
     <div class="navbar-right">
       
-      <button class="navbar-btn weather" @click="showPopup"><span class="weather-icon"></span></button>
-
-      <button class="navbar-btn" @click="showNotifications"><span class="notif-icon"></span></button>
+      <div class="icons">
+        <button class="navbar-btn weather" @click="showPopup"><span class="weather-icon"></span></button>
+        <button class="navbar-btn" @click="showNotifications"><span class="notif-icon"></span></button>
+      </div>
 
       <router-link to="/settings" class="navbar-link">Settings</router-link>
       <router-link to="/profile" class="navbar-user">
@@ -129,13 +130,23 @@
   display: flex;
   align-items: center;
 }
-
+.icons {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+  margin-right: 30px;
+  border-radius: 20px;
+  background-color: #A8D160;
+  color: #1B1818;
+  text-decoration: none;
+  font-family: "Proxima Soft SemiBold";
+  font-size: 23px;
+}
 .navbar-btn {
-  margin-right: 2rem;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
-  background-color: #F1E9E9;
+  background-color: transparent;
   color: #333;
   cursor: pointer;
 }
@@ -145,7 +156,6 @@
   height: 1.5rem; /* Adjust the size of the icon */
   background: url('../assets/icons/sun.svg') center center no-repeat;
   background-size: contain;
-  border-radius: 0.25rem;
 
 }
 .notif-icon {
@@ -154,11 +164,9 @@
   height: 1.5rem; /* Adjust the size of the icon */
   background: url('../assets/icons/bell.svg') center center no-repeat;
   background-size: contain;
-  border-radius: 0.25rem;
 
 }
 .navbar-btn:hover {
-  background-color: #eee;
 }
 
 .navbar-user {
