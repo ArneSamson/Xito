@@ -13,18 +13,43 @@
     <canvas id="myCanvas" width="300" height="200"></canvas>
 
     <div id="message">{{ message }}</div>
+
+    <div>
+      <!-- display saved images -->
+      <h2>Saved Images</h2>
+      <ul>
+        <li v-for="image in savedImages" :key="image.id">
+          <img :src="image.url" :alt="image.fileName" width="100" height="100">
+          <span>{{ image.highestLabel }}</span>
+        </li>
+      </ul>
+    </div>
+    
   </div>
 </template>
 
 <script>
 import * as ml5 from 'ml5';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
+
+  data() {
+    return {
+      savedImages: [] // array of saved images
+    };
+  },
   mounted() {
     const message = document.querySelector("#message");
     const checkButton = document.querySelector("#button");
     const video = this.$refs.video;
+
+    // Retrieve saved images from local storage
+    const savedImages = localStorage.getItem("savedImages");
+    if (savedImages) {
+      this.savedImages = JSON.parse(savedImages);
+    }
+
     navigator.mediaDevices
       .getUserMedia({ video: true })
       .then((stream) => {
@@ -59,19 +84,29 @@ export default {
           <br> ${results[4].label} : ${results[4].confidence * 100}%
         `;
 
-        // Make a POST request to save the results
-        const data = {
-          label: results[0].label,
-          confidence: results[0].confidence
-        };
-        axios.post('http://localhost:8080/api/data', data)
-          .then(response => {
-            console.log('Data saved:', response.data);
-          })
-          .catch(error => {
-            console.error('Failed to save data:', error);
-          });
+        // Save the image locally
+        const fileName = `image_${Date.now()}.jpeg`;
+        saveImageLocally(imageData, fileName, results);
+
       });
+    }
+
+    const saveImageLocally = (imageData, fileName, results) => {
+
+      const highestConfidence = results[0].confidence * 100;
+      const highestLabel = results[0].label;
+
+      // Save the image in local storage
+      const savedImage = {
+        id: Date.now(),
+        fileName: fileName,
+        url: imageData,
+        highestConfidence: highestConfidence,
+        highestLabel: highestLabel,
+      };
+      this.savedImages.push(savedImage);
+
+      localStorage.setItem("savedImages", JSON.stringify(this.savedImages));
     }
 
     function modelLoaded() {
