@@ -19,10 +19,12 @@
         <button class="navbar-btn" @click="showNotifications"><span class="notif-icon"></span></button>
       </div>
 
-      <router-link to="/settings" class="navbar-link">Settings</router-link>
+      <!--<router-link to="/settings" class="navbar-link">Settings</router-link>-->
       <router-link to="/profile" class="navbar-user">
-        <span class="navbar-user-greeting">Welcome, {{ username }}</span>
-        <span class="navbar-user-function">{{ userFunction }}</span>
+        <div class="user_data">
+          <span class="navbar-user-greeting">Welcome, {{ username }}</span>
+          <span class="navbar-user-function">{{ userFunction + ' ' + userGroup }}</span>        </div>
+        <div class="user_img"><span class="navbar-user-image"></span></div>
       </router-link>
     </div>
 
@@ -55,6 +57,7 @@
       return {
         username: "Jon", // Replace with actual username
         userFunction: "Team Leader", // Replace with actual user function
+        userGroup: "Group 1", // Replace with actual user group
         showingPopup: false,
         popupOpen: false,
         showingNoti: false,
@@ -78,6 +81,17 @@
   font-family: "Proxima Soft SemiBold";
   src: url('../public/fonts/Proxima Soft/ProximaSoft-SemiBold.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: "Poppins Regular";
+  src: url('../public/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "Poppins Light";
+  src: url('../public/fonts/Poppins/Poppins-Light.ttf') format('truetype');
+}
+
 .navbar {
     position: fixed; /* Set position to fixed */
     top: 0; /* Stick to top of viewport */
@@ -87,7 +101,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
     background-color: #63B76D; 
     color: #F1E9E9;
 }
@@ -102,7 +119,7 @@
 }
 
 .navbar-logo img {
-  height: 3rem;
+  height: 3.3rem;
   width: auto;
 }
 
@@ -118,7 +135,7 @@
   color: #1B1818;
   text-decoration: none;
   font-family: "Proxima Soft SemiBold";
-  font-size: 23px;
+  font-size: 1.375rem;
 }
 
 .navbar-link:hover {
@@ -138,9 +155,7 @@
   border-radius: 20px;
   background-color: #A8D160;
   color: #1B1818;
-  text-decoration: none;
-  font-family: "Proxima Soft SemiBold";
-  font-size: 23px;
+
 }
 .navbar-btn {
   padding: 0.5rem 1rem;
@@ -152,16 +167,16 @@
 }
 .weather-icon {
   display: inline-block;
-  width: 1.5rem; /* Adjust the size of the icon */
-  height: 1.5rem; /* Adjust the size of the icon */
+  width: 1.6rem; /* Adjust the size of the icon */
+  height: 1.6rem; /* Adjust the size of the icon */
   background: url('../assets/icons/sun.svg') center center no-repeat;
   background-size: contain;
 
 }
 .notif-icon {
   display: inline-block;
-  width: 1.5rem; /* Adjust the size of the icon */
-  height: 1.5rem; /* Adjust the size of the icon */
+  width: 1.6rem; /* Adjust the size of the icon */
+  height: 1.6rem; /* Adjust the size of the icon */
   background: url('../assets/icons/bell.svg') center center no-repeat;
   background-size: contain;
 
@@ -171,17 +186,41 @@
 
 .navbar-user {
   display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  background-color: #A8D160;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding: 10px;
+  border-radius: 20px;
+}
+.user_data {
+  display: flex;
   flex-direction: column;
   align-items: flex-end;
+  margin-right: 1rem;
+  color: #1B1818;
 }
 
 .navbar-user-greeting {
-  font-size: 1.25rem;
+  font-family: "Proxima Soft SemiBold";
+  font-size: 1.375rem;
 }
 
 .navbar-user-function {
-  font-size: 0.75rem;
-  color: #ccc;
+  font-family: "Poppins Light";
+  font-size: 0.875rem;
+  color: #1B1818;
+
+}
+
+.navbar-user-image {
+  display: inline-block;
+  width: 2rem; /* Adjust the size of the icon */
+  height: 2rem; /* Adjust the size of the icon */
+  background: url('../assets/tomato-images/2.jpg') center center no-repeat;
+  background-size: contain;
+  margin-top: 0.5rem;
 }
 
 </style>
