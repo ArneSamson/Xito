@@ -91,6 +91,10 @@
   font-family: "Poppins Light";
   src: url('../public/fonts/Poppins/Poppins-Light.ttf') format('truetype');
 }
+@font-face {
+  font-family: "Poppins Medium";
+  src: url('../public/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
+}
 
 .navbar {
     position: fixed; /* Set position to fixed */
