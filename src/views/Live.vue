@@ -4,7 +4,7 @@
       <span class="cam">Camera</span>
       <div>
         <!-- add code for displaying the video here -->
-        <video ref="video" width="300" height="200" controls autoplay></video>
+        <video ref="video" width="300" height="200" autoplay></video>
       </div>
 
       <div>
@@ -74,9 +74,6 @@ export default {
 
     function userImageUploaded() {
 
-      const row = parseInt(window.prompt("Enter Row Number:"));
-      const block = parseInt(window.prompt("Enter Block Number:"));
-
       const canvas = document.getElementById("myCanvas");
       const ctx = canvas.getContext("2d");
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -95,6 +92,9 @@ export default {
           <br> ${results[3].label} : ${(results[3].confidence * 100).toFixed(2)}%
           <br> ${results[4].label} : ${(results[4].confidence * 100).toFixed(2)}%
         `;
+  
+      const row = parseInt(window.prompt("Enter Row Number:"));
+      const block = parseInt(window.prompt("Enter Block Number:"));
 
       // Save the image locally
       const fileName = `image_${Date.now()}.jpeg`;

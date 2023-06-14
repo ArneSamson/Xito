@@ -1,7 +1,7 @@
 <template>
     <div class="greenhouses-container">
       <div v-for="greenhouse in greenhouses" :key="greenhouse.id">
-        <h2>Greenhouse {{ greenhouse.id }} - {{ greenhouse.status }}</h2>
+        <h2 class="status">Greenhouse {{ greenhouse.id }} - {{ greenhouse.status }}</h2>
         <div class="status-circle">
           <svg viewBox="0 0 36 36" class="donut">
             <circle class="donut-hole" cx="18" cy="18" r="15.91549430918954" fill="#fff"></circle>
@@ -44,9 +44,15 @@
     display: flex;
     justify-content: space-around; /* this will evenly distribute the greenhouse components horizontally */
     background-color: #F1E9E9;
-    margin: 60px 48px 0px 48px;
+    margin: 20px 48px 0px 48px;
     padding: 32px;
     border-radius: 20px;
+    }
+
+    .status {
+    font-size: 1.375rem;
+    font-family: "Proxima Soft SemiBold";
+
     }
 
     .status-circle {
@@ -59,6 +65,7 @@
     transform: rotate(-90deg);
     width: 150px;
     height: 150px;
+
     }
 
     .donut-hole {
@@ -82,8 +89,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 36px;
+    font-size: 2.125rem;
     font-weight: bold;
+    font-family: "Poppins SemiBold";
     }
 
     .indicators {
@@ -98,11 +106,13 @@
     /* background-color: gray; */
     color: #1B1818;
     /* border-radius: 5px; */
-    font-size: 24px;
+    font-size: 0.875rem;
+    font-family: "Poppins Medium";
     }
 
     .indicator-title {
-    font-weight: bold;
+    font-size: 0.875rem;
+    font-family: "Poppins Regular";
     }
 </style>
   

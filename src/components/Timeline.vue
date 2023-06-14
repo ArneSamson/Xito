@@ -25,26 +25,24 @@
 </script>
   
 <style scoped>
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* padding-right: 100px; */
-    margin-left: auto;
-    margin-right: auto;
-  }
   .navbar-link{
     margin: 0;
   }
   
-  .timeline-days {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
-    margin: 0;
-  }
-  
+  .timeline {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.timeline-days {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
   .timeline-day {
     display: flex;
     justify-content: center;
@@ -57,6 +55,8 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
   }
   
   .timeline-day:hover {

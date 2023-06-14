@@ -1,9 +1,9 @@
 <template>
     <div>
       <!-- add your settings content here -->
+      <Timeline/>
       <Statistics/>
       <div>
-        <Timeline/>
         <GreenhouseLayout/>
       </div>
 
@@ -35,27 +35,41 @@
   export default {
     name: 'Dashboard',
     components: {
-    imageRecognition,
     Statistics,
     IllnessesDash,
     SideShootDash,
     Unpollinated,
     Harvestable,
-    Timeline,
-    GreenhouseLayout
+    GreenhouseLayout,
+    Timeline
   }
   }
   </script>
   
 <style scoped>
 .top-padding{
-  padding-top: 40px;
+  padding-top: 20px;
 }
+
+.statistics{
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
 
 .pop-ups{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 40px;
+  padding-top: 20px;
 }
 </style>

@@ -96,6 +96,11 @@
   src: url('../public/fonts/Poppins/Poppins-Medium.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: "Poppins SemiBold";
+  src: url('../public/fonts/Poppins/Poppins-SemiBold.ttf') format('truetype');
+}
+
 .navbar {
     position: fixed; /* Set position to fixed */
     top: 0; /* Stick to top of viewport */
@@ -184,8 +189,6 @@
   background: url('../assets/icons/bell.svg') center center no-repeat;
   background-size: contain;
 
-}
-.navbar-btn:hover {
 }
 
 .navbar-user {
