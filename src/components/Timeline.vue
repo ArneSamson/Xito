@@ -27,6 +27,9 @@
 <style scoped>
   .navbar-link{
     margin: 0;
+    text-decoration: none;
+    color: #1B1818;
+
   }
   
   .timeline {
@@ -57,7 +60,12 @@
     transition: all 0.2s ease-in-out;
     margin-left: 5px;
     margin-right: 5px;
+    font-family: "Poppins Medium";
+    font-size: 0.875rem;
+    background-color: #A8D160;
+    text-decoration: none;
   }
+
   
   .timeline-day:hover {
     background-color: #ddd;
