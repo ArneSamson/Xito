@@ -8,11 +8,14 @@
       </div>
 
       <div class="pop-ups">
-        <IllnessesDash/>
-        <SideShootDash/>
-        <Unpollinated/>
-        <Harvestable/>
-
+        <div class="pop ">
+          <IllnessesDash/>
+          <SideShootDash/>
+        </div>
+        <div class="pop2">
+          <Unpollinated/>
+          <Harvestable/>
+        </div>
       </div>
 
 
@@ -55,6 +58,7 @@
   display: flex;
   flex-direction: row;
   padding-top: 20px;
+  padding-bottom: 0px;
 }
 
 .timeline {
@@ -63,13 +67,21 @@
   align-items: center;
   margin-top: 20px;
 }
-
-
-
 .pop-ups{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.pop{
+  display: flex;
+  flex-direction: row;
   padding-top: 20px;
+  margin: 0 auto;
+}
+.pop2{
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  margin: 0 auto;
 }
 </style>

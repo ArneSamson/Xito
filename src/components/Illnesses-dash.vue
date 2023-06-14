@@ -1,9 +1,10 @@
 <template>
 
   <div>
-    <h1>Illnesses</h1>
       <div class="diseases">
-        <div class="disease" v-for="greenhouse in greenhouses" :key="greenhouse.id">
+        <h1>Illnesses</h1>
+        <div class="class">
+          <div class="disease" v-for="greenhouse in greenhouses" :key="greenhouse.id">
           <div class="disease-header">
           <h3>{{ greenhouse.name }}</h3>
             </div>
@@ -22,7 +23,8 @@
               <p class="no-infected-plants" v-if="!greenhouse.infectedPlants.length">No infected plants</p>
           </div>
         </div>
-      </div>
+          </div>
+        </div>
     </div>
   </div>
   </template>
@@ -87,28 +89,47 @@
   <style scoped>
   .diseases {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     /* justify-content: space-between; */
     background-color: #F1E9E9;
     margin: 60px 48px 0px 48px;
     padding: 32px;
     border-radius: 20px;
   }
-  
-  .disease {
-    width: 48%;
-    margin-bottom: 20px;
-    /* background-color: #F1E9E9; */
+
+  .class {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
   }
-  
+  .disease {
+  width: 48%;
+  margin-bottom: 20px;
+  /* Add more padding here */
+  padding: 20px;
+}
+
+  h1 {
+    font-family: "Proxima Soft SemiBold";
+    font-size: 1.875rem;
+    margin: 0rem;
+    padding: 0rem;  
+  }
   .disease-header {
     background-color: #F1E9E9;
     padding: 10px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 20px;
+    font-family: "Poppins Medium";
+    font-size: 0.875rem;
   }
   .plant img{
     height: 50px;
+  }
+  .disease-content {
+    background-color: #F1E9E9;
+    padding: 10px;
+    font-family: "Poppins Light";
+    font-size: 0.75rem;
+    padding: auto;
   }
 
   </style>
