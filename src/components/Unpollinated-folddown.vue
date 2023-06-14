@@ -89,7 +89,7 @@
   };
   </script>
   
-  <style>
+  <style scoped>
   .fold-down-menu {
     display: flex;
     flex-direction: column;
