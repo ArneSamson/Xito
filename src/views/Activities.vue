@@ -1,6 +1,5 @@
 <template>
     <div>
-      <h1>Activities</h1>
       <!-- add your settings content here -->
       <div class="All">
         <Tasks/>
@@ -22,3 +21,13 @@
   }
   </script>
   
+  <style scoped>
+  .All {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  </style>
