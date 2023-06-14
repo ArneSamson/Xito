@@ -68,7 +68,12 @@
 
   
   .timeline-day:hover {
-    background-color: #ddd;
+    color: #F1E9E9;
+    background-color: #EF4732;
+  }
+
+  .navbar-link:hover {
+    color: #F1E9E9;
   }
   
   .timeline-day.active {
