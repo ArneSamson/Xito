@@ -1,20 +1,23 @@
 <template>
-  <div>
-    <div>
-      <!-- add code for displaying the video here -->
-      <video ref="video" width="300" height="200" controls autoplay></video>
+  <div class="camerasaved">
+    <div class="camera">
+      <span class="cam">Camera</span>
+      <div>
+        <!-- add code for displaying the video here -->
+        <video ref="video" width="300" height="200" controls autoplay></video>
+      </div>
+
+      <div>
+        <!-- button that checks the current frame of the video -->
+        <button type="button" id="button" @click="checkFrame">Check Frame</button>
+      </div>
+
+      <canvas id="myCanvas" width="300" height="200"></canvas>
+
+      <div id="message">{{ message }}</div>
     </div>
 
-    <div>
-      <!-- button that checks the current frame of the video -->
-      <button type="button" id="button" @click="checkFrame">Check Frame</button>
-    </div>
-
-    <canvas id="myCanvas" width="300" height="200"></canvas>
-
-    <div id="message">{{ message }}</div>
-
-    <div>
+  <div class="saved">
       <!-- display saved images -->
       <h2>Saved Images</h2>
       <ul>
@@ -28,7 +31,7 @@
           <span> {{ image.block }} </span>
         </li>
       </ul>
-    </div>
+  </div>
     
   </div>
 </template>
@@ -130,3 +133,90 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+  .camerasaved {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    margin: 10 auto;    
+  }
+  .camera {
+    display: flex;
+    flex-direction: column;
+    background-color: #F1E9E9;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .cam {
+    font-family: "Proxima Soft SemiBold";
+    font-size: 1.875rem;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  #button {
+    background-color: #A8D160;
+    border-radius: 20px;
+    border: none;
+    color: #1B1818;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.625rem;
+  }
+  #message {
+    font-family: "Poppins Light";
+    font-size: 0.875rem;
+    color: #1B1818;
+    margin-top: 10px;
+  }
+  #myCanvas {
+    width: 300px;
+  }
+
+  .saved {
+    margin-left: 20px;
+    flex-direction: column;
+    background-color: #F1E9E9;
+    border-radius: 20px;
+    padding: 20px;
+    padding-top: 0px;
+    margin-top: 20px;
+  }
+
+  .saved h2 {
+    font-family: "Proxima Soft SemiBold";
+    font-size: 1.875rem;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+
+  .saved ul {
+    list-style-type: none;
+    padding: 0;
+  }  
+
+  .saved li {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    font-family: "Poppins Light";
+    font-size: 0.875rem;
+    color: #1B1818;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #87B4E0;
+    border-radius: 20px;
+    padding: 10px;
+
+  }
+
+  .saved li img {
+    margin-right: 10px;
+    border-radius: 20px;
+  }
+
+</style>
