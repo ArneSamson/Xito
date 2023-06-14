@@ -4,7 +4,7 @@
       <span class="cam">Camera</span>
       <div>
         <!-- add code for displaying the video here -->
-        <video ref="video" width="300" height="200" controls autoplay></video>
+        <video ref="video" width="300" height="200" autoplay></video>
       </div>
 
       <div>
@@ -17,21 +17,32 @@
       <div id="message">{{ message }}</div>
     </div>
 
-  <div class="saved">
-      <!-- display saved images -->
+    <div class="saved">
       <h2>Saved Images</h2>
       <ul>
-        <li v-for="image in savedImages" :key="image.id">
-          <img :src="image.url" :alt="image.fileName" width="100" height="100">
-          <span> {{ image.highestLabel }} </span>
-          <span> {{ image.highestConfidence.toFixed(2) }}% </span>
-          <span> {{ new Date(image.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }} </span>
-          <span> {{ new Date(image.timestamp).toLocaleDateString() }} </span>
-          <span> {{ image.row }} </span>
-          <span> {{ image.block }} </span>
+        <li v-for="image in savedImages" :key="image.id" class="image-info">
+          <img :src="image.url" :alt="image.fileName">
+          <div class="image-details">
+            <div class="output">
+              <h3>OUTPUT</h3>
+              <p>{{ image.highestLabel }}</p>
+              <p>{{ image.highestConfidence.toFixed(2) }}%</p>
+            </div>
+            <div class="location">
+              <h3>LOCATION:</h3>
+              <p> Row: {{ image.row }}</p>
+              <p>Block: {{ image.block }}</p>
+            </div>
+            <div class="detected">
+              <h3>DETECTED:</h3>
+              <p>{{ new Date(image.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}</p>
+              <p>{{ new Date(image.timestamp).toLocaleDateString() }}</p>
+            </div>
+          </div>
         </li>
       </ul>
-  </div>
+    </div>
+
     
   </div>
 </template>
@@ -217,6 +228,27 @@ export default {
   .saved li img {
     margin-right: 10px;
     border-radius: 20px;
+    height: 215px;
+    width: 350px;
   }
 
+  .image-info{
+    display: flex;
+    flex-direction: row;
+  }
+  .image-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+  }
+
+  .image-info h3,
+  .image-info p {
+    margin: 0;
+  }
+
+  .image-info p:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  
 </style>
