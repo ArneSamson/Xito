@@ -71,28 +71,29 @@ export default {
 
     function userImageUploaded() {
 
-      const row = parseInt(window.prompt("Enter Row Number:"));
-      const block = parseInt(window.prompt("Enter Block Number:"));
-
+      
       const canvas = document.getElementById("myCanvas");
       const ctx = canvas.getContext("2d");
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
       const imageData = canvas.toDataURL("image/jpeg", 0.75);
-
+      
       const image = new Image();
       image.src = imageData;
       message.innerHTML = "Image was loaded!"
-
+      
       classifier.classify(image, (err, results) => {
         console.log(results);
         message.innerHTML = `
-          ${results[0].label} : ${(results[0].confidence * 100).toFixed(2)}% 
-          <br> ${results[1].label} : ${(results[1].confidence * 100).toFixed(2)}%
-          <br> ${results[2].label} : ${(results[2].confidence * 100).toFixed(2)}%
-          <br> ${results[3].label} : ${(results[3].confidence * 100).toFixed(2)}%
-          <br> ${results[4].label} : ${(results[4].confidence * 100).toFixed(2)}%
+        ${results[0].label} : ${(results[0].confidence * 100).toFixed(2)}% 
+        <br> ${results[1].label} : ${(results[1].confidence * 100).toFixed(2)}%
+        <br> ${results[2].label} : ${(results[2].confidence * 100).toFixed(2)}%
+        <br> ${results[3].label} : ${(results[3].confidence * 100).toFixed(2)}%
+        <br> ${results[4].label} : ${(results[4].confidence * 100).toFixed(2)}%
         `;
 
+        const row = parseInt(window.prompt("Enter Row Number:"));
+        const block = parseInt(window.prompt("Enter Block Number:"));
+        
       // Save the image locally
       const fileName = `image_${Date.now()}.jpeg`;
       saveImageLocally(imageData, fileName, results, row, block);
