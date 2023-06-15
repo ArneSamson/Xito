@@ -25,26 +25,27 @@
 </script>
   
 <style scoped>
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* padding-right: 100px; */
-    margin-left: auto;
-    margin-right: auto;
-  }
   .navbar-link{
     margin: 0;
+    text-decoration: none;
+    color: #1B1818;
+
   }
   
-  .timeline-days {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
-    margin: 0;
-  }
-  
+  .timeline {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.timeline-days {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
   .timeline-day {
     display: flex;
     justify-content: center;
@@ -57,10 +58,22 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-family: "Poppins Medium";
+    font-size: 0.875rem;
+    background-color: #A8D160;
+    text-decoration: none;
   }
+
   
   .timeline-day:hover {
-    background-color: #ddd;
+    color: #F1E9E9;
+    background-color: #EF4732;
+  }
+
+  .navbar-link:hover {
+    color: #F1E9E9;
   }
   
   .timeline-day.active {

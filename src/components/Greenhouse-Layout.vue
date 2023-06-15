@@ -106,8 +106,10 @@ export default {
   .greenhouse-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around; /* this will evenly distribute the greenhouse components horizontally */
     margin-top: 20px;
+    margin: 20px 48px 0px 48px;
+    padding: 32px;
     background-color: #F1E9E9;
     border-radius: 20px;
   }
@@ -125,6 +127,22 @@ export default {
   .column {
     display: flex;
     flex-direction: column;
+  }
+  
+  select {
+    width: 100%;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #c4c4c4;
+    background-color: #A8D160;
+    padding: 10px;
+    font-size: 0.875rem;
+    font-family: "Poppins Medium";
+  }
+
+  .custom-select option {
+    font-size: 0.875rem;
+    font-family: "Poppins Medium";
   }
 
   .block {

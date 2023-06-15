@@ -1,18 +1,21 @@
 <template>
     <div>
       <!-- add your settings content here -->
+      <Timeline/>
       <Statistics/>
       <div>
-        <Timeline/>
         <GreenhouseLayout/>
       </div>
 
       <div class="pop-ups">
-        <IllnessesDash/>
-        <SideShootDash/>
-        <Unpollinated/>
-        <Harvestable/>
-
+        <div class="pop ">
+          <IllnessesDash/>
+          <SideShootDash/>
+        </div>
+        <div class="pop2">
+          <Unpollinated/>
+          <Harvestable/>
+        </div>
       </div>
 
 
@@ -35,27 +38,50 @@
   export default {
     name: 'Dashboard',
     components: {
-    imageRecognition,
     Statistics,
     IllnessesDash,
     SideShootDash,
     Unpollinated,
     Harvestable,
-    Timeline,
-    GreenhouseLayout
+    GreenhouseLayout,
+    Timeline
   }
   }
   </script>
   
 <style scoped>
 .top-padding{
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
+.statistics{
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 0px;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
 .pop-ups{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 40px;
+}
+.pop{
+  display: flex;
+  flex-direction: row;
+  padding-top: 20px;
+  margin: 0 auto;
+}
+.pop2{
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  margin: 0 auto;
 }
 </style>

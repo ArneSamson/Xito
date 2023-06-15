@@ -50,6 +50,14 @@
   padding-top: 40px;
 }
 
+h1 {
+  font-size: 40px;
+  font-family: "Proxima Soft SemiBold";
+  font-size: 2rem;
+  color: #1B1818;
+  margin-bottom: 20px;
+}
+
 .pop-ups{
   display: flex;
   flex-direction: row;

@@ -84,8 +84,7 @@ export default {
     const classifier = ml5.imageClassifier('../../public/model/model.json', modelLoaded);
 
     function userImageUploaded() {
-
-      
+    
       const canvas = document.getElementById("myCanvas");
       const ctx = canvas.getContext("2d");
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -104,6 +103,9 @@ export default {
         <br> ${results[3].label} : ${(results[3].confidence * 100).toFixed(2)}%
         <br> ${results[4].label} : ${(results[4].confidence * 100).toFixed(2)}%
         `;
+  
+      const row = parseInt(window.prompt("Enter Row Number:"));
+      const block = parseInt(window.prompt("Enter Block Number:"));
 
         const row = parseInt(window.prompt("Enter Row Number:"));
         const block = parseInt(window.prompt("Enter Block Number:"));
