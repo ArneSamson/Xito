@@ -142,6 +142,7 @@
   border-radius: 20px;
   background-color: #A8D160;
   color: #1B1818;
+  /* color: #fff; */
   text-decoration: none;
   font-family: "Proxima Soft SemiBold";
   font-size: 1.375rem;
